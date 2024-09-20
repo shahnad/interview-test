@@ -39,7 +39,7 @@ const Login = () => {
                 </div>
             </div>
 
-            <Form onSubmit={formik.handleSubmit} validated={isValid} className='login-form d-flex flex-column gap-3'>
+            <Form onSubmit={formik.handleSubmit} validated={isValid} className='login-form w-100 d-flex flex-column gap-3'>
                 <Form.Group as={Row} controlId="formPlaintextEmail">
                     <Form.Control type="text" placeholder='Username or email'
                         name="email"
