@@ -3,11 +3,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import "./index.scss"
+import { useDispatch } from 'react-redux';
+import { logoutSuccess } from '../../../features/authentication/authSlice';
 
 const Header = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     let [searchparams, setSearchParams] = useSearchParams();
     const activeQuery = searchparams?.get('continent')
-    const navigate = useNavigate();
 
     const tabs = [
         { id: 0, title: "All", query: "all" },
@@ -19,7 +22,8 @@ const Header = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('user');
-        // toast.success("Logged out sucecssfully!")
+        dispatch(logoutSuccess())
+        toast.success("Logged out sucecssfully!")
         navigate('/login')
     }
 
