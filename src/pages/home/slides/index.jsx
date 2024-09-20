@@ -4,10 +4,9 @@ import { SlickCarousal } from '../../../components/carousal';
 
 const randomImages = [
     { id: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjphUYQBzxsOUSCmXX7BfAov3z-qPkQoycIA&s" },
-    { id: 2, image: "https://img.freepik.com/free-photo/free-photo-background-summer-travel-beach-waves-surfing-blue-evening-sky-with-mountains_1340-23548.jpg?t=st=1726848115~exp=1726851715~hmac=6950ef8288a237ed2d6d123a89c0069a99c6ceec9d5e56eb8dddff21ff32ec79&w=1380" },
-    { id: 3, image: "https://img.freepik.com/free-photo/young-asia-girl-wear-medical-face-mask-use-mobile-phone-with-dressed-casual-cloth-self-isolation-social-distancing-quarantine-corona-virus-panoramic-banner-blue-background-with-copy-space_7861-2703.jpg?t=st=1726848151~exp=1726851751~hmac=5bab3b6c2d5ff1bef2bfa9e5f319a3f06384decc14891e519f133f1352eda5b3&w=1380" },
-    { id: 4, image: "https://img.freepik.com/free-photo/young-asia-girl-wear-medical-face-mask-use-mobile-phone-with-dressed-casual-cloth-self-isolation-social-distancing-quarantine-corona-virus-panoramic-banner-blue-background-with-copy-space_7861-2703.jpg?t=st=1726848151~exp=1726851751~hmac=5bab3b6c2d5ff1bef2bfa9e5f319a3f06384decc14891e519f133f1352eda5b3&w=1380" },
-    { id: 5, image: "https://img.freepik.com/free-photo/mountain-landscape-day-time_23-2150724875.jpg?t=st=1726848197~exp=1726851797~hmac=cda0d36c8ffe90876fa81c6b4458498eed84977f06799cfc2729a04b372c8321&w=1480" },
+    { id: 2, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQrdT6fJeCpWp4Nf7qjN0ux9CGdQ7SZ5hofw&s" },
+    { id: 3, image: "https://wowslider.com/sliders/demo-18/data1/images/hongkong1081704.jpg" },
+    { id: 4, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS88H-zLGf3tAz4lupAZWuvf_1ppXBmtTO1Q&s" },
 ];
 
 const Slides = () => {
@@ -29,12 +28,18 @@ const Slides = () => {
 
     return (
         <Container fluid={"xs"} className="p-0 m-0 w-100 my-4">
-            <Row className=' flex flex-row justify-content-between'>
-                <Col xs={12} sm={12} lg={8} className='border border-2 border-tertiary mh-20'>
-                    <SlickCarousal slides={randomImages} />
+            <Row className='flex flex-row justify-content-between flex-xs-row-reverse'>
+                <Col xs={12} sm={12} lg={8} className='slide-col p-0 m-0'>
+                    <div className='p-3'>
+                        <div className='border border-2 border-tertiary p-0 m-0'>
+                            <SlickCarousal slides={randomImages} />
+                        </div>
+                    </div>
                 </Col>
-                <Col xs={12} sm={12} lg={3} className='border border-2 border-tertiary mh-20'>
-                    <SlickCarousal slides={slides2} settings={settings} />
+                <Col xs={12} sm={12} lg={4} className='border slide-col p-0 m-0  '>
+                    <div className='border border-2 border-tertiary p-0 m-0'>
+                        <SlickCarousal slides={slides2} settings={settings} />
+                    </div>
                 </Col>
             </Row>
         </Container>
