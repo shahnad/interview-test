@@ -9,9 +9,9 @@ const defaultSettings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     adaptiveHeight: true,
-    
+
 };
 
 export const SlickCarousal = ({ settings = defaultSettings, slides = [] }) => {
@@ -20,7 +20,7 @@ export const SlickCarousal = ({ settings = defaultSettings, slides = [] }) => {
             {!!slides?.length ? <Slider {...settings} >
                 {!!slides?.length && slides?.map(({ id, image }) =>
                     <div key={id} className='w-100'>
-                        <Image  style={{ minHeight: 400, maxHeight: 400, height: 400, objectFit: 'contain' }} className='w-100 h-100' src={image} />
+                        <Image fluid style={{ maxHeight: 500, objectFit: 'contain' }} className='w-100 h-100' src={image} />
                     </div>)}
             </Slider> : <div>
                 No slides are present

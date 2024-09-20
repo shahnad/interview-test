@@ -7,9 +7,9 @@ import Countries from './countries'
 
 const Home = () => {
     return (
-        <div className='px-5 home-container w-100'>
+        <div className='home-container w-100'>
             <Header />
-            <Container fluid={"xs"} className="p-0 my-4 w-100">
+            <Container fluid={"xs"} className="p-0 my-5 w-100">
                 <Row className='w-100'>
                     <Col><div className='w-100 h-100 border-2 border-top border-primary'></div></Col>
                     <Col><h1 className='text-center  welcome-text text-primary'>WELCOME</h1></Col>

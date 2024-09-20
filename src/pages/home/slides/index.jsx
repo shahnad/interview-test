@@ -3,33 +3,38 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { SlickCarousal } from '../../../components/carousal';
 
 const randomImages = [
-    { id: 1, image: "https://www.shutterstock.com/shutterstock/photos/2476723479/display_1500/stock-photo-africa-inscription-in-shroud-african-continent-nature-of-africa-journey-through-shroud-safari-2476723479.jpg" },
-    { id: 2, image: "https://www.shutterstock.com/shutterstock/photos/2470678123/display_1500/stock-photo-world-map-showing-numerical-data-across-continents-blue-and-black-background-emphasizing-economic-2470678123.jpg" },
-    { id: 3, image: "https://www.shutterstock.com/shutterstock/photos/2412643141/display_1500/stock-photo-africa-continent-shaped-from-golden-glitter-on-a-black-background-2412643141.jpg" },
-    { id: 4, image: "https://www.shutterstock.com/shutterstock/photos/2480961741/display_1500/stock-vector-futuristic-world-map-silhouette-simple-world-map-in-good-quality-digital-map-template-for-2480961741.jpg" },
-    { id: 5, image: "https://www.shutterstock.com/shutterstock/photos/2427542713/display_1500/stock-vector-the-world-map-with-cartoon-animals-for-kids-nature-discovery-and-continent-name-ocean-name-2427542713.jpg" },
+    { id: 1, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjphUYQBzxsOUSCmXX7BfAov3z-qPkQoycIA&s" },
+    { id: 2, image: "https://img.freepik.com/free-photo/free-photo-background-summer-travel-beach-waves-surfing-blue-evening-sky-with-mountains_1340-23548.jpg?t=st=1726848115~exp=1726851715~hmac=6950ef8288a237ed2d6d123a89c0069a99c6ceec9d5e56eb8dddff21ff32ec79&w=1380" },
+    { id: 3, image: "https://img.freepik.com/free-photo/young-asia-girl-wear-medical-face-mask-use-mobile-phone-with-dressed-casual-cloth-self-isolation-social-distancing-quarantine-corona-virus-panoramic-banner-blue-background-with-copy-space_7861-2703.jpg?t=st=1726848151~exp=1726851751~hmac=5bab3b6c2d5ff1bef2bfa9e5f319a3f06384decc14891e519f133f1352eda5b3&w=1380" },
+    { id: 4, image: "https://img.freepik.com/free-photo/young-asia-girl-wear-medical-face-mask-use-mobile-phone-with-dressed-casual-cloth-self-isolation-social-distancing-quarantine-corona-virus-panoramic-banner-blue-background-with-copy-space_7861-2703.jpg?t=st=1726848151~exp=1726851751~hmac=5bab3b6c2d5ff1bef2bfa9e5f319a3f06384decc14891e519f133f1352eda5b3&w=1380" },
+    { id: 5, image: "https://img.freepik.com/free-photo/mountain-landscape-day-time_23-2150724875.jpg?t=st=1726848197~exp=1726851797~hmac=cda0d36c8ffe90876fa81c6b4458498eed84977f06799cfc2729a04b372c8321&w=1480" },
 ];
 
 const Slides = () => {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 200,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         adaptiveHeight: true,
-        fade :true
+        fade: true
     };
-    
+
+    const slides2 = [
+        { id: 1, image: "https://plus.unsplash.com/premium_photo-1670226145723-d3b3e23079f7?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { id: 2, image: "https://images.unsplash.com/photo-1669115380104-886eeab91820?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+    ]
+
     return (
         <Container fluid={"xs"} className="p-0 m-0 w-100 my-4">
-            <Row>
-                <Col xs={12} sm={12} lg={9} >
+            <Row className=' flex flex-row justify-content-between'>
+                <Col xs={12} sm={12} lg={8} className='border border-2 border-tertiary mh-20'>
                     <SlickCarousal slides={randomImages} />
                 </Col>
-                <Col xs={12} sm={12} lg={3} >
-                    <SlickCarousal slides={randomImages} settings={settings} />
+                <Col xs={12} sm={12} lg={3} className='border border-2 border-tertiary mh-20'>
+                    <SlickCarousal slides={slides2} settings={settings} />
                 </Col>
             </Row>
         </Container>
