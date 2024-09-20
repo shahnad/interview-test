@@ -1,0 +1,82 @@
+@import '../../../custom.scss';
+
+
+.login-layout {
+    @include sm {
+        margin: auto !important;
+    }
+
+    height: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    .title-container {
+        display: flex;
+        flex-direction: column;
+
+        .bold {
+            font-weight: 600;
+        }
+
+        .text-16 {
+            font-size: 16px;
+        }
+
+        .text-black-500 {
+            color: #3D3D3D;
+        }
+
+        .link {
+            color: $info;
+
+        }
+    }
+
+    .login-form {
+        .row {
+            margin: 0;
+
+            .invalid-feedback, .valid-feedback {
+              font-size: 12px !important;
+            }
+
+            .form-control {
+                border: 2px solid #3E3E3E;
+                border-radius: 0;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            input::-webkit-input-placeholder {
+                color: #3E3E3E;
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            .form-check {
+                .form-check-input {
+                    border: 2px solid #3E3E3E;
+                    border-radius: 0;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+
+                .form-check-label {
+                    font-size: 16px;
+                    color: $primary;
+                }
+            }
+        }
+
+        .submit-btn {
+            border-radius: 0;
+            padding: 10px auto;
+        }
+    }
+}

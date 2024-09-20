@@ -1,0 +1,52 @@
+// screen size
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+//colors
+$primary :#3C3C3C;
+$secondary: #adb5bd;
+$info: #587FFF;
+$warning: yellow;
+$danger: red;
+$success: green;
+
+//responsiveness
+@mixin sm {
+    @media (min-width: $screen-sm-min) {
+        @content;
+    }
+}
+
+// Medium devices
+@mixin md {
+    @media (min-width: $screen-md-min) {
+        @content;
+    }
+}
+
+// Large devices
+@mixin lg {
+    @media (min-width: $screen-lg-min) {
+        @content;
+    }
+}
+
+// Extra large devices
+@mixin xl {
+    @media (min-width: $screen-xl-min) {
+        @content;
+    }
+}
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger
+);
+
+@import '~bootstrap/scss/bootstrap';
