@@ -1,7 +1,20 @@
-# Getting Started with Create React App and Redux
+
+# React App Using Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Used Technologes are : 
+
+ 1. React JS
+ 2. redux
+ 3. React Bootstrap
+ 4. toastify
+ 5. slick carousal
+ 6. Yup validation
+ 7. Formik for form handling
+ 8. sass
+
+ 
 ## Available Scripts
 
 In the project directory, you can run:
