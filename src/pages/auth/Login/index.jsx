@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch, } from 'react-redux';
-import { Row, Form, Button } from 'react-bootstrap'
+import { Row, Form, Button, Image } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { loginSchema } from '../../../utils/validations';
 import { loginSuccess } from '../../../features/authentication/authSlice';
+import { toast } from 'react-toastify';
 import "./index.scss"
-import ToastTile from '../../../common/Toast';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Login = () => {
         onSubmit: (user) => {
             localStorage.setItem('user', JSON.stringify(user));
             dispatch(loginSuccess(user));
-            
+            toast.success("Logged in successfully!");
             navigate('/home');
         }
     });
@@ -72,8 +72,20 @@ const Login = () => {
                         feedbackType="invalid"
                     />
                 </Form.Group>
-                <Button className='submit-btn' type="submit" variant="primary">Sign In</Button>{' '}
+                <Button className='submit-btn' type="submit" variant="primary">Sign In</Button>
             </Form>
+
+            <div className='sigin-text ' >
+                <div className='divider'></div>
+                <p className='text'>
+                    Or Signin With
+                </p>
+            </div>
+            <div className='social-media-images'>
+                <Image src="/images/social-media.png" rounded />
+            </div>
+
+
         </div>
 
     )

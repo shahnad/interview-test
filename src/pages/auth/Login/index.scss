@@ -38,8 +38,9 @@
         .row {
             margin: 0;
 
-            .invalid-feedback, .valid-feedback {
-              font-size: 12px !important;
+            .invalid-feedback,
+            .valid-feedback {
+                font-size: 12px !important;
             }
 
             .form-control {
@@ -78,5 +79,31 @@
             border-radius: 0;
             padding: 10px auto;
         }
+    }
+
+    .sigin-text {
+        margin: 25px auto;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .text{
+            background-color: white;
+            width: max-content;
+            position: absolute;
+            z-index: 1;
+            left:30%;
+            right: 50%;
+        }
+        .divider{
+            width: 100%;
+            border-bottom: 2px solid $secondary;
+           
+        }
+    }
+
+    .social-media-images {
+        height: fit-content;
     }
 }

@@ -1,9 +1,13 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import "./index.scss"
+import { useSelector } from 'react-redux';
 
 const LoginLayout = ({ children }) => {
-    return (
+    const { user = null } = useSelector(state => state?.auth);
+    
+    const LoginComponents = () => (
         <Container fluid="xxl" className='container-layout'>
             <Row>
                 <Col xs={12} md={6} lg={8} >{children}</Col>
@@ -13,6 +17,8 @@ const LoginLayout = ({ children }) => {
             </Row>
         </Container>
     )
+
+    return (<>{ user ===null ? <LoginComponents /> : <Navigate to={"/home"} />} </>)
 }
 
 
