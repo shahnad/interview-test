@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchCountriesBegins, fetchCountriesFails, fetchCountriesSuccess } from '../../../features/countries/countrySlice'
 import { toast } from 'react-toastify'
 import { collectDataFromRange, getStartAndEndIndex, getUniqueDatas } from '../../../utils/common'
+import "./index.scss"
 
 const Countries = () => {
     let [searchparams] = useSearchParams();
@@ -43,18 +44,18 @@ const Countries = () => {
         const { start = 0, end = 10 } = getStartAndEndIndex(counter);
         const list = collectDataFromRange(countries, start, end);
         setCountryList(getUniqueDatas([...countryList, ...list], 'name'))
-         //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [counter, countries])
 
 
     return (
         <>
-            <Container fluid="xs" className='my-5'>
+            <Container fluid="xs" className='my-5 countries-comntainer'>
                 <Row  >
                     {!!countryList?.length && countryList?.map(country => <Country key={country?.name} {...country} />)}
                 </Row>
                 <Row>
-                    <Button color="primary" onClick={() => setcounter(counter + 1)} className='w-max-content'> Load More</Button>
+                    <Button color="primary" onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
                 </Row>
             </Container>
         </>
