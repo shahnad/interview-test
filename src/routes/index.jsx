@@ -4,6 +4,8 @@ import Login from "../pages/auth/Login";
 import Home from "../pages/home";
 import LoginLayout from "../pages/auth/LoginLayOut";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { Suspense } from "react";
+import Loader from "../components/loader";
 
 export const router = createBrowserRouter([
     {
@@ -12,10 +14,10 @@ export const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <LoginLayout><Login /></LoginLayout>,
+        element: <Suspense fallback={<Loader />}> <LoginLayout><Login /></LoginLayout></Suspense>,
     },
     {
         path: "/home",
-        element: <ProtectedRoute> <Home /></ProtectedRoute>,
+        element: <Suspense fallback={<Loader />}> <ProtectedRoute> <Home /></ProtectedRoute></Suspense>,
     }
 ]);

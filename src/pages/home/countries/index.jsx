@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Image, Row } from 'react-bootstrap'
+import { Button, Col, Container, Image, Placeholder, Row } from 'react-bootstrap'
 import { useSearchParams } from 'react-router-dom'
 import { instance } from "../../../utils/api"
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,11 +8,12 @@ import { toast } from 'react-toastify'
 import { collectDataFromRange, getStartAndEndIndex, getUniqueDatas } from '../../../utils/common'
 import "./index.scss"
 
+
 const Countries = () => {
     let [searchparams] = useSearchParams();
     const activeQuery = searchparams?.get('continent');
     const [counter, setcounter] = useState(0)
-    const { countries = [] } = useSelector(state => state?.countries) || { countries: [] }
+    const { countries = [], loader = false } = useSelector(state => state?.countries) || { countries: [] }
 
     const [countryList, setCountryList] = useState([]);
 
@@ -51,15 +52,43 @@ const Countries = () => {
     return (
         <>
             <Container fluid="xs" className='my-5 countries-comntainer'>
-                <Row  >
-                    {!!countryList?.length && countryList?.map(country => <Country key={country?.name} {...country} />)}
+                <Row >
+                    {loader ? Array.from({ length: 10 }, (_, i) => i + 1)?.map(loader => <Loader key={loader} />) :
+                        !!countryList?.length ?  countryList?.map(country => <Country key={country?.name} {...country} />):
+                        "No Data found"
+                        }
                 </Row>
                 <Row>
-                    <Button color="primary" onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
+                    <Button color="primary" disabled={loader} onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
                 </Row>
             </Container>
         </>
     )
+}
+
+
+
+
+const Loader = () => {
+    return (<Col xs={12} fluid sm={12} md={6} className='p-0 m-0' >
+        <div className='p-1'>
+            <div className='border border-2 border-tertiary p-2'>
+                <div className='d-flex flex-row gap-4'>
+                    <Placeholder style={{ height: 96, width: 145 }} animation="glow">
+                        <Placeholder className="w-100 h-100" />
+                    </Placeholder>
+                    <div className='p-2 w-100'>
+                        <Placeholder style={{ height: 10, width: '100%' }} animation="glow">
+                            <Placeholder className="w-100 h-10" />
+                        </Placeholder>
+                        <Placeholder style={{ height: 10, width: '50%' }} animation="glow">
+                            <Placeholder className="w-50 h-10" />
+                        </Placeholder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Col>)
 }
 
 const Country = ({ name, flag, region }) => {
