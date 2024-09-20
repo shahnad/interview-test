@@ -70,7 +70,7 @@ const Countries = () => {
 
 
 const Loader = () => {
-    return (<Col xs={12} fluid sm={12} md={6} className='p-0 m-0' >
+    return (<Col xs={12}  sm={12} md={12} lg={6} fluid className='p-0 m-0' >
         <div className='p-1'>
             <div className='border border-2 border-tertiary p-2'>
                 <div className='d-flex flex-row gap-4'>
@@ -92,13 +92,13 @@ const Loader = () => {
 }
 
 const Country = ({ name, flag, region }) => {
-    return (<Col xs={12} fluid sm={12} md={6} className='p-0 m-0' >
+    return (<Col xs={12} fluid sm={12} md={12} lg={6} className='p-0 m-0' >
         <div className='p-1'>
             <div className='border border-2 border-tertiary p-2'>
-                <div className='d-flex flex-row gap-4'>
+                <div className='d-flex flex-row text-truncate gap-4 xs'>
                     <Image style={{ maxHeight: 96, maxWidth: 145 }} src={flag} />
                     <div className='p-2'>
-                        <h4 className="text-tertiary fw-bolder">{name}</h4>
+                        <h4 className="text-tertiary fw-bolder ">{name}</h4>
                         <p>{region}</p>
                     </div>
                 </div>
