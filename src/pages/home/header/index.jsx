@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import "./index.scss"
 import { useDispatch } from 'react-redux';
 import { logoutSuccess } from '../../../features/authentication/authSlice';
+import "./index.scss"
 
 const Header = () => {
     const navigate = useNavigate();
