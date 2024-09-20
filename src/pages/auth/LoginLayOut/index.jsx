@@ -8,8 +8,8 @@ const LoginLayout = ({ children }) => {
     const { user = null } = useSelector(state => state?.auth);
     
     const LoginComponents = () => (
-        <Container fluid="xxl" className='container-layout'>
-            <Row>
+        <Container fluid="xs" className='container-layout'>
+            <Row className="w-100">
                 <Col xs={12} md={6} lg={8} >{children}</Col>
                 <Col className={"d-none d-md-block"} xs={'none'} md={6} lg={4}>
                     <Image className='avatar-right' src="/images/login-image.png" rounded />

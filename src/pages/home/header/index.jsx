@@ -18,8 +18,8 @@ const Header = () => {
     const handleSelectMenu = (query) => setSearchParams({ continent: query });
 
     const handleLogout = () => {
-        localStorage.clear();
-        toast.success("Logged out sucecssfully!")
+        localStorage.removeItem('user');
+        // toast.success("Logged out sucecssfully!")
         navigate('/login')
     }
 
@@ -36,10 +36,10 @@ const Header = () => {
                 <div className='d-flex gap-2 justify-content-between w-100 py-5'>
                     <h4 className='font-weight-bold'>Countries </h4>
                     <div className='d-flex'>
-                        {!!tabs?.length && tabs?.map(({ title, query }) => <p role="button" onClick={() => handleSelectMenu(query)} className={`mx-2 ${query === activeQuery ? 'border-2 border-bottom border-tertiary' : ''}`}>{title}</p>)}
+                        {!!tabs?.length && tabs?.map(({ title, query }) => <p key={title} role="button" onClick={() => handleSelectMenu(query)} className={`mx-2 ${query === activeQuery ? 'border-2 border-bottom border-tertiary' : ''}`}>{title}</p>)}
                     </div>
                 </div>
-                <Button color="secondary" className="logout-btn" onClick={handleLogout}>Logout</Button>
+                <Button color="secondary" className="logout-btn" type="button" onClick={handleLogout}>Logout</Button>
             </div>
         </div>
     )

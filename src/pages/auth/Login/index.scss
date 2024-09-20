@@ -7,10 +7,11 @@
     }
 
     height: 100%;
-    max-width: 280px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     gap: 3px;
+    align-items: center;
 
     .title-container {
         display: flex;
@@ -95,6 +96,7 @@
             z-index: 1;
             left:30%;
             right: 50%;
+            top:-15px;
         }
         .divider{
             width: 100%;
