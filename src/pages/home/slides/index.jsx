@@ -36,9 +36,11 @@ const Slides = () => {
                         </div>
                     </div>
                 </Col>
-                <Col xs={12} sm={12} lg={4} className='border slide-col p-0 m-0  '>
-                    <div className='border border-2 border-tertiary p-0 m-0'>
-                        <SlickCarousal slides={slides2} settings={settings} />
+                <Col xs={12} sm={12} lg={4} className=' slide-col p-0 m-0  '>
+                    <div className=''>
+                        <div className='border border-2 border-tertiary p-0 m-0'>
+                            <SlickCarousal slides={slides2} settings={settings} />
+                        </div>
                     </div>
                 </Col>
             </Row>

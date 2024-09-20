@@ -3,12 +3,20 @@
 .home-container {
     padding-left: 20%;
     padding-right: 20%;
+
     .welcome-text {
         font-weight: 800;
     }
-    .slide-col{
-        max-height: 300px;
-        height: 300px;
+
+    .slide-col {
+        max-height: 230px;
+        height: 230px;
         overflow: hidden;
+    }
+
+    .carousal-image {
+        max-height: 230px;
+        object-fit: cover;
+        overflow: hidden
     }
 }
