@@ -14,7 +14,7 @@ const Countries = () => {
     const activeQuery = searchparams?.get('continent');
     const [counter, setcounter] = useState(0)
     const { countries = [], loader = false } = useSelector(state => state?.countries) || { countries: [] }
-
+    const [total, setTotal] = useState(0)
     const [countryList, setCountryList] = useState([]);
 
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const Countries = () => {
             dispatch(fetchCountriesBegins())
             const { data = [] } = await instance.get(`${types[type]}?fields=name,region,flag`)
             dispatch(fetchCountriesSuccess(data))
+            setTotal(data?.length)
         } catch (error) {
             toast.error(error?.response?.message);
             dispatch(fetchCountriesFails())
@@ -36,6 +37,7 @@ const Countries = () => {
     }
 
     useEffect(() => {
+        setcounter(0)
         setCountryList([])
         getCountryLists({ type: activeQuery })
         //eslint-disable-next-line
@@ -47,20 +49,20 @@ const Countries = () => {
         setCountryList(getUniqueDatas([...countryList, ...list], 'name'))
         //eslint-disable-next-line
     }, [counter, countries])
-
+    
 
     return (
         <>
             <Container fluid="xs" className='my-5 countries-comntainer'>
                 <Row >
                     {loader ? Array.from({ length: 10 }, (_, i) => i + 1)?.map(loader => <Loader key={loader} />) :
-                        !!countryList?.length ?  countryList?.map(country => <Country key={country?.name} {...country} />):
-                        "No Data found"
-                        }
+                        !!countryList?.length ? countryList?.map(country => <Country key={country?.name} {...country} />) :
+                            "No Data found"
+                    }
                 </Row>
-                <Row>
+                {total !== countryList?.length && <Row>
                     <Button color="primary" disabled={loader} onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
-                </Row>
+                </Row>}
             </Container>
         </>
     )
@@ -70,7 +72,7 @@ const Countries = () => {
 
 
 const Loader = () => {
-    return (<Col xs={12}  sm={12} md={12} lg={6} fluid className='p-0 m-0' >
+    return (<Col xs={12} sm={12} md={12} lg={6} fluid className='p-0 m-0' >
         <div className='p-1'>
             <div className='border border-2 border-tertiary p-2'>
                 <div className='d-flex flex-row gap-4'>
