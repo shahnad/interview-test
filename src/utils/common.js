@@ -13,8 +13,8 @@ export const collectDataFromRange = (array, fromIndex, toIndex) => {
 };
 
 export const getStartAndEndIndex = counter => ({
-    start: counter * 11,
-    end: counter * 11 + 10
+    start: counter * 10,
+    end: counter * 10 + 9
 });
 
 

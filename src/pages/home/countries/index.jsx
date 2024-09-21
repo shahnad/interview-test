@@ -16,10 +16,11 @@ const Countries = () => {
     const { countries = [], loader = false } = useSelector(state => state?.countries) || { countries: [] }
     const [total, setTotal] = useState(0)
     const [countryList, setCountryList] = useState([]);
-
+    const [disable, setDisable] = useState(false)
     const dispatch = useDispatch();
 
     const getCountryLists = async ({ type }) => {
+
         const types = {
             'all': "/all",
             'asia': `/region/${type}`,
@@ -28,8 +29,8 @@ const Countries = () => {
         try {
             dispatch(fetchCountriesBegins())
             const { data = [] } = await instance.get(`${types[type]}?fields=name,region,flag`)
-            dispatch(fetchCountriesSuccess(data))
-            setTotal(data?.length)
+            dispatch(fetchCountriesSuccess(getUniqueDatas(data, 'name')))
+            setTotal(getUniqueDatas(data, 'name')?.length)
         } catch (error) {
             toast.error(error?.response?.message);
             dispatch(fetchCountriesFails())
@@ -44,12 +45,15 @@ const Countries = () => {
     }, [activeQuery])
 
     useEffect(() => {
-        const { start = 0, end = 10 } = getStartAndEndIndex(counter);
+        const { start = 0, end = 9 } = getStartAndEndIndex(counter);
         const list = collectDataFromRange(countries, start, end);
         setCountryList(getUniqueDatas([...countryList, ...list], 'name'))
+        setDisable(start > total)
+        console.log(start, total, "llll",start > total);
         //eslint-disable-next-line
-    }, [counter, countries])
-    
+    }, [counter, countries, total,])
+
+
 
     return (
         <>
@@ -60,9 +64,9 @@ const Countries = () => {
                             "No Data found"
                     }
                 </Row>
-                {total !== countryList?.length && <Row>
-                    <Button color="primary" disabled={loader} onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
-                </Row>}
+                <Row>
+                    <Button color="primary" disabled={loader || disable} onClick={() => setcounter(counter + 1)} className='load-more-btn mx-auto my -5'> Load More</Button>
+                </Row>
             </Container>
         </>
     )
